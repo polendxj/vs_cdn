@@ -234,11 +234,11 @@ class PerformanceMonitoringMenu extends Component {
                 <li className="left" onClick={this._leftMenuClick.bind(this, '/')}>
                     <hr style={{width:"90%"}} />
                 </li>
-                <li className="left">
+                <li className="left" onClick={this._leftMenuClick.bind(this, '/source')}>
                     <a href="javascript:void(0)" style={{fontSize:"14px"}}><i className="icon-feed"></i>
                         <span>{"源站服务"}</span></a>
                 </li>
-                <li className="left"  onClick={this._leftMenuClick.bind(this, '/source')}>
+                <li className="left"  >
                     <a href="javascript:void(0)" style={{fontSize:"14px"}}><i className="icon-dribbble3"></i>
                         <span>{"融合CDN"}</span></a>
                 </li>

@@ -1,11 +1,19 @@
 import React, {Component, PropTypes} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {commonRefresh} from '../../actions/Common'
 
 
-class Source_panel_container extends Component {
+export default class Source_panel_container extends Component {
     constructor(props) {
         super(props)
     }
-
+    _startRefresh() {
+        this.props.dispatch(commonRefresh())
+    }
+    componentDidMount(){
+        this._startRefresh();
+    }
     render() {
         var tableHeight = ($(window).height() - 93);
         return (
@@ -15,11 +23,12 @@ class Source_panel_container extends Component {
                         width: "250px",
                         height: tableHeight,
                         float: "left",
-                        borderRight: "thin lightgray solid"
+                        borderRight: "thin lightgray solid",
+                        zIndex:"10"
                     }}>
                         <Source_panel_left />
                     </div>
-                    <div style={{overflow: "hidden", height: "100%",}}>
+                    <div style={{overflow: "hidden", height: tableHeight, padding: "20px",zIndex:"1"}}>
                         <Source_panel_right />
                     </div>
                     <div style={{clear: "both"}}></div>
@@ -71,7 +80,7 @@ class Source_panel_left extends Component {
                 </div>
                 <fieldset className="content-group" style={{padding: "30px"}}>
                     <legend style={{fontSize: "14px", color: "#5E6166", border: "0 red solid"}}>存储空间列表</legend>
-                    <div className="navigation navigation-main1 navigation-accordion">
+                    <div className="navigation navigation-main1 navigation-accordion" style={{marginTop: "-40px"}}>
                         <li>
                             <a href="#" className="has-ul"> <span>香港</span></a>
                             <ul className="hidden-ul">
@@ -151,7 +160,10 @@ class Source_panel_left extends Component {
                         </li>
                     </div>
                 </fieldset>
+                <fieldset className="content-group" style={{padding: "30px"}}>
+                    <legend style={{fontSize: "14px", color: "#5E6166", border: "0 red solid"}}><a>跨区域同步管理</a></legend>
 
+                </fieldset>
 
             </div>
         )
@@ -167,11 +179,57 @@ class Source_panel_right extends Component {
     render() {
         return (
             <div>
+                <h4 className="panel-title"><i className="icon-feed"> </i> &nbsp;&nbsp;Andrew</h4>
+                <div className="tabbable">
+                    <ul className="nav nav-tabs nav-tabs-bottom">
+                        <li className="active"><a style={{fontSize:"16px"}} href="#bottom-tab1" data-toggle="tab">空间概览</a></li>
+                        <li><a style={{fontSize:"16px"}} href="#bottom-tab2" data-toggle="tab">数据统计</a></li>
+                        <li><a style={{fontSize:"16px"}} href="#bottom-tab3" data-toggle="tab">内容管理</a></li>
+                        <li><a style={{fontSize:"16px"}} href="#bottom-tab4" data-toggle="tab">镜像存储</a></li>
+                        <li><a style={{fontSize:"16px"}} href="#bottom-tab5" data-toggle="tab">绑定域名</a></li>
+                        <li><a style={{fontSize:"16px"}} href="#bottom-tab6" data-toggle="tab">样式分隔符设置</a></li>
+                        <li><a style={{fontSize:"16px"}} href="#bottom-tab7" data-toggle="tab">图片样式</a></li>
+                        <li><a style={{fontSize:"16px"}} href="#bottom-tab8" data-toggle="tab">空间设置</a></li>
 
+                    </ul>
+
+                    <div className="tab-content">
+                        <div className="tab-pane active" id="bottom-tab1">
+                            Developing
+                        </div>
+                        <div className="tab-pane" id="bottom-tab2">
+                            Developing
+                        </div>
+                        <div className="tab-pane" id="bottom-tab3">
+                            Developing
+                        </div>
+                        <div className="tab-pane" id="bottom-tab4">
+                            Developing
+                        </div>
+                        <div className="tab-pane" id="bottom-tab5">
+                            Developing
+                        </div>
+                        <div className="tab-pane" id="bottom-tab6">
+                            Developing
+                        </div>
+                        <div className="tab-pane" id="bottom-tab7">
+                            Developing
+                        </div>
+                        <div className="tab-pane" id="bottom-tab8">
+                            Developing
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
 }
 
+function mapStateToProps(state) {
+    const {commonReducer}=state
+    return {
+        refresh: commonReducer.refresh,
+    }
+}
 
-export default Source_panel_container
+export default connect(mapStateToProps)(Source_panel_container)
