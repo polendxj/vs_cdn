@@ -13,8 +13,10 @@
     max-width: 320px;
 }
 p{
+    font-size: 14px;
     line-height: 28px;
     max-width: 640px;
+    margin: 15px 0;
 }
 img {
     vertical-align: middle;
@@ -62,11 +64,7 @@ hr, img {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    height: 100%;
     overflow-y: auto;
-}
-.resource-body {
-    padding: 40px;
 }
 .q-item, .q-item-label {
     margin-bottom: 30px;
@@ -79,12 +77,26 @@ hr, img {
     font-size: 16px;
     font-weight: 500;
     color: #2f3033;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.cdn-label{
+    font-weight: 700;
 }
 .radio-btn.selected {
     background-color: #fff;
 }
 .radio-btn.selected, .radio-btn:hover {
     border-color: #1989fa;
+}
+.radio-btn input[type=radio] {
+    position: relative;
+    margin: auto 10px auto 0;
+    outline: 0;
+}
+.radio-btn span{
+    position: relative;
+    top: -2px;
 }
 .radio-btn {
     moz-user-select: -moz-none;
@@ -122,4 +134,83 @@ hr {
 .q-item .item-body .item-describe {
     color: #5e6166;
     margin: 0 0 20px;
+}
+.help-block {
+    vertical-align: middle;
+    max-width: 300px;
+}
+.cdn-help-block {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #9ea1a6;
+}
+.cdn-help-block-width{
+    max-width: 640px;
+}
+.https-crt2 {
+    margin-top: 20px;
+}
+.https-crt2 .select-crt {
+    margin-bottom: 20px;
+}
+textarea.form-control {
+    max-width: 505px;
+    width: 430px;
+    height: 214px;
+}
+.radio-tab .cdn-nav-tabs {
+    margin-bottom: 8px;
+    border: 0;
+}
+.cdn-nav-tabs {
+    border-bottom: 1px solid #e1e6f0;
+    margin-bottom: 48px;
+}
+.cdn-nav {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+.cdn-nav-tabs>li {
+    float: left;
+    margin-bottom: -1px;
+}
+.cdn-nav>li, .cdn-nav>li>a {
+    display: block;
+    position: relative;
+}
+.radio-tab .cdn-nav-tabs>li.active>a {
+    border: 0;
+}
+.radio-tab .cdn-nav-tabs>li>a {
+    display: inline-block;
+    margin: 0;
+}
+
+.cdn-nav-tabs>li.active>a, .cdn-nav-tabs>li.active>a:focus, .cdn-nav-tabs>li.active>a:hover {
+    color: #1989fa;
+    background-color: transparent;
+    border: 0;
+}
+.cdn-nav-tabs>li.active>a, .cdn-nav-tabs>li.active>a:focus, .cdn-nav-tabs>li.active>a:hover {
+    cursor: default;
+}
+.cdn-nav-tabs>li>a {
+    color: #8f9bb3;
+    font-weight: 500;
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 40px;
+}
+.cdn-nav>li>a {
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+}
+.cdn-nav-tabs>li>a {
+    line-height: 1.42857143;
+}
+.cdn-nav>li>a {
+    padding: 10px 15px;
 }
