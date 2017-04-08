@@ -93,6 +93,7 @@ class FusionContainerRight extends Component {
     constructor(props) {
         super(props);
         this.domainType = "normal";
+        this.geoCover = "china"
     }
 
     componentDidMount() {
@@ -121,6 +122,10 @@ class FusionContainerRight extends Component {
 
     domainTypeChanged(type) {
         this.domainType = type;
+        this.props._startRefresh();
+    }
+    geoCoverSelect(type) {
+        this.geoCover = type;
         this.props._startRefresh();
     }
 
@@ -202,29 +207,29 @@ class FusionContainerRight extends Component {
                                 </section>
                                 <section className="q-item">
                                     <div className="row">
-                                        <div className="item-title col-md-3">域名类型</div>
+                                        <div className="item-title col-md-3">覆盖范围</div>
                                         <div className="item-body col-md-9">
                                             <div>
                                                 <label
-                                                    className={domainType == "normal" ? "radio-btn selected" : "radio-btn"}
-                                                    onClick={this.domainTypeChanged.bind(this, 'normal')}>
-                                                    <input type="radio" name="domainType"
-                                                           checked={domainType == "normal"}/>
-                                                    <span>普通域名</span>
+                                                    className={this.geoCover == "china" ? "radio-btn selected" : "radio-btn"}
+                                                    onClick={this.geoCoverSelect.bind(this, 'china')}>
+                                                    <input type="radio" name="geoCover"
+                                                           checked={this.geoCover == "china"}/>
+                                                    <span>中国大陆</span>
                                                 </label>
                                                 <label
-                                                    className={domainType == "wildcard" ? "radio-btn selected" : "radio-btn"}
-                                                    onClick={this.domainTypeChanged.bind(this, 'wildcard')}>
-                                                    <input type="radio" name="domainType"
-                                                           checked={domainType == "wildcard"}/>
-                                                    <span>泛域名</span>
+                                                    className={this.geoCover == "foreign" ? "radio-btn selected" : "radio-btn"}
+                                                    onClick={this.geoCoverSelect.bind(this, 'foreign')}>
+                                                    <input type="radio" name="geoCover"
+                                                           checked={this.geoCover == "foreign"}/>
+                                                    <span>海外</span>
                                                 </label>
                                                 <label
-                                                    className={domainType == "pan" ? "radio-btn selected" : "radio-btn"}
-                                                    onClick={this.domainTypeChanged.bind(this, 'pan')}>
-                                                    <input type="radio" name="domainType"
-                                                           checked={domainType == "pan"}/>
-                                                    <span>泛子域名</span>
+                                                    className={this.geoCover == "global" ? "radio-btn selected" : "radio-btn"}
+                                                    onClick={this.geoCoverSelect.bind(this, 'global')}>
+                                                    <input type="radio" name="geoCover"
+                                                           checked={this.geoCover == "global"}/>
+                                                    <span>全球</span>
                                                 </label>
                                             </div>
                                         </div>
