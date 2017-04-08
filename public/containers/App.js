@@ -222,9 +222,9 @@ class ContentPanel extends Component {
         const {fetching, data}=this.props
         var auth = sessionStorage['auth']
         return (
-            <div className="page-container" style={{height: "2000px"}}>
+            <div className="page-container" style={{height: "2000px",marginTop:"-1px"}}>
                 <div className="page-content" style={{backgroundColor: "white"}}>
-                    <div className="sidebar sidebar-main" style={{borderRight: 'thin #F5F5F5 solid'}}>
+                    <div className="sidebar sidebar-main" style={{backgroundColor:"#F5F7FA",position:"relative",top:"-80px",height:"2000px"}}>
                         <MainMenu selected={this.props.selected} _changeLeftMenu={this._changeLeftMenu}/>
                     </div>
                     <div className="content-wrapper">
@@ -238,7 +238,7 @@ class ContentPanel extends Component {
                         }}>
                             <div style={{float: 'left', marginLeft: '14px'}}>
                                 ⓒ 2016. <span style={{color: '#193153'}}>Copyright Powered</span> by <span
-                                style={{color: '#193153'}}>ENTRIX Co., Ltd. All Rights Reserved.</span>
+                                style={{color: '#193153'}}>VideoSolar Co., Ltd. All Rights Reserved.</span>
                             </div>
                         </div>
                     </div>

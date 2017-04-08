@@ -49,21 +49,24 @@ class MainMenu extends Component {
                 mainMenu = <PerformanceMonitoringMenu _changeLeftMenu={this.props._changeLeftMenu}/>
                 break;
             case 1:
-                mainMenu = <SystemConfiguration _changeLeftMenu={this.props._changeLeftMenu}/>
+                mainMenu = <PerformanceMonitoringMenu _changeLeftMenu={this.props._changeLeftMenu}/>
+
                 break;
             case 2:
-                mainMenu = <Elastic />
+                mainMenu = <PerformanceMonitoringMenu _changeLeftMenu={this.props._changeLeftMenu}/>
+
                 break;
             case 3:
-                mainMenu = <UserCenter />
+                mainMenu = <PerformanceMonitoringMenu _changeLeftMenu={this.props._changeLeftMenu}/>
+
                 break;
             case 4:
-                mainMenu = <AlarmManage />
-                break
+                mainMenu = <PerformanceMonitoringMenu _changeLeftMenu={this.props._changeLeftMenu}/>
+
                 break;
         }
         return (
-            <div className="sidebar sidebar-main " style={{borderRight: '0 red solid'}}>
+            <div className="sidebar sidebar-main" style={{backgroundColor:"#F5F7FA",position:"relative",top:"-80px;"}}>
                 <div className="sidebar-content">
                     <div className="sidebar-category sidebar-category-visible">
                         <div className="category-content no-padding">
@@ -210,39 +213,45 @@ class PerformanceMonitoringMenu extends Component {
         return (
             <ul className="navigation navigation-main navigation-accordion">
 
-                <li className="navigation-header"><span>{Current_Lang.menus.realtimeMonitor}</span> <i className="icon-menu" title=""
-                                                                       data-original-title="实时监控"></i>
-                </li>
-                <li className="left active" onClick={this._leftMenuClick.bind(this, '/dashboard')}><a
-                    href="javascript:void(0)"><i
-                    className="icon-home4"></i> <span>{Current_Lang.menus.mainBoard}</span></a></li>
-                <li className="left">
-                    <a href="javascript:void(0)" className="has-ul"><i className="icon-feed"></i>
-                        <span>{Current_Lang.menus.serviceMonitor}</span></a>
-                    <ul className="hidden-ul" style={{display: 'none'}}>
-                        <li  onClick={this._leftMenuClick.bind(this, '/Monitor/Realtime/AppMonitorContainer')}><a href="#">{Current_Lang.menus.appService}</a></li>
-                        <li  onClick={this._leftMenuClick.bind(this, '/UserManager/CSSServerMonitor')}><a
-                            href="javascript:void(0)">{Current_Lang.menus.cseService}</a></li>
-                        <li  onClick={this._leftMenuClick.bind(this, '/Monitor/Realtime/CSRServerMonitorContainer')}><a href="#">{Current_Lang.menus.csrService}</a></li>
-                        <li  onClick={this._leftMenuClick.bind(this, '/Monitor/Realtime/CSMServerMonitorContainer')}><a href="#">{Current_Lang.menus.csmService}</a></li>
-                        <li  onClick={this._leftMenuClick.bind(this, '/Developing')}><a href="#">{Current_Lang.menus.sedService}</a></li>
-                    </ul>
-                </li>
-                <li className="left">
-                    <a onClick={this._leftMenuClick.bind(this, '/Monitor/RealTimeSessions')} href="javascript:void(0)">
-                        <i className="icon-bubbles9"></i> <span>{Current_Lang.menus.realtimeSession}</span>
+                <li className="navigation-header" style={{height:"100px"}}>
+                    <a className="navbar-brand" href="index.html"><img src="/assets/images/logo_light.png"
+                                                                       style={{
+                                                                           width: "60px",
+                                                                           height: "60px",
+                                                                           marginLeft: '26px'
+                                                                       }} alt=""/>
+
                     </a>
                 </li>
-                <li className="left">
-                    <a href="javascript:void(0)" className="has-ul"><i className="icon-warning"></i>
-                        <span>{Current_Lang.menus.alarmManagement}</span></a>
-                    <ul className="hidden-ul" style={{display: 'none'}}>
-                        <li  onClick={this._leftMenuClick.bind(this, '/Monitor/Alarm/AlarmHistory')}>
-                            <a href="javascript:void(0)"> <span>{Current_Lang.menus.alarmHistory}</span></a></li>
-                        <li  onClick={this._leftMenuClick.bind(this, '/Monitor/Alarm/Threshold')}>
-                            <a href="javascript:void(0)"> <span>{Current_Lang.menus.thresholdSetting}</span></a></li>
-                    </ul>
+                <li className="left active" onClick={this._leftMenuClick.bind(this, '/')}><a
+                    href="javascript:void(0)" style={{fontSize:"14px"}}><i
+                    className="icon-grid6"></i> <span style={{fontSize:"14px ! important"}}>{"资源主页"}</span></a></li>
+                <li className="left" onClick={this._leftMenuClick.bind(this, '/')}><a
+                    href="javascript:void(0)" style={{fontSize:"14px"}}><i
+                    className="icon-vcard"></i> <span>{"个人中心"}</span></a></li>
+                <li className="left" onClick={this._leftMenuClick.bind(this, '/')}><a
+                    href="javascript:void(0)" style={{fontSize:"14px"}}><i
+                    className="icon-coin-yen"></i> <span>{"财务统计"}</span></a></li>
+                <li className="left" onClick={this._leftMenuClick.bind(this, '/')}>
+                    <hr style={{width:"90%"}} />
                 </li>
+                <li className="left">
+                    <a href="javascript:void(0)" ><i className="icon-feed"></i>
+                        <span>{"对象存储"}</span></a>
+                </li>
+                <li className="left">
+                    <a href="javascript:void(0)" style={{fontSize:"14px"}}><i className="icon-dribbble3"></i>
+                        <span>{"融合CDN"}</span></a>
+                </li>
+                <li className="left">
+                    <a href="javascript:void(0)" style={{fontSize:"14px"}}><i className=" icon-chip"></i>
+                        <span>{"数据处理"}</span></a>
+                </li>
+                <li className="left">
+                    <a href="javascript:void(0)" style={{fontSize:"14px"}}><i className=" icon-video-camera3"></i>
+                        <span>{"直播云服务"}</span></a>
+                </li>
+
             </ul>
 
         )
