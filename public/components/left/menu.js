@@ -21,24 +21,23 @@ class MainMenu extends Component {
         })
 
         $(".hidden-ul li").on("click",function () {
-            $(".hidden-ul li a").css("backgroundColor","transparent");
-            $(".hidden-ul li a").css("borderRight","0 #2C4B77 solid");
-            $(".hidden-ul li a").css("color","rgba(255,255,255,0.75)");
-            $(this).find("a").css("backgroundColor","#132640");
-            $(this).find("a").css("color","white");
-            $(this).find("a").css("borderRight","4px #2C4B77 solid");
-            sessionStorage["routerType"]="";
+            $(".hidden-ul li a").css("borderTop","0 lightgray solid");
+            $(".hidden-ul li a").css("borderBottom","0 lightgray solid");
+            $(".hidden-ul li").find("div").hide();
+            $(this).find("div").show();
+            $(this).find("a").css("borderTop","thin lightgray solid");
+            $(this).find("a").css("borderBottom","thin lightgray solid");
+
         })
     }
     componentDidMount(){
         $(".hidden-ul li").on("click",function () {
-            $(".hidden-ul li a").css("backgroundColor","transparent");
-            $(".hidden-ul li a").css("borderRight","0 #2C4B77 solid");
-            $(".hidden-ul li a").css("color","rgba(255,255,255,0.75)");
-            $(this).find("a").css("backgroundColor","#132640");
-            $(this).find("a").css("color","white");
-            $(this).find("a").css("borderRight","4px #2C4B77 solid");
-            sessionStorage["routerType"]="";
+            $(".hidden-ul li a").css("borderTop","0 lightgray solid");
+            $(".hidden-ul li a").css("borderBottom","0 lightgray solid");
+            $(".hidden-ul li").find("div").hide();
+            $(this).find("div").show();
+            $(this).find("a").css("borderTop","thin lightgray solid");
+            $(this).find("a").css("borderBottom","thin lightgray solid");
         })
     }
 
