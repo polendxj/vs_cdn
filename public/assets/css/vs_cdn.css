@@ -1,0 +1,29 @@
+.no-resources {
+    padding: 90px 60px;
+    text-align: center;
+}
+.no-resources p{
+    margin: 16px auto;
+    color: #8d9199;
+    font-size: 12px;
+}
+.no-resources img{
+    width: 80%;
+    min-width: 240px;
+    max-width: 320px;
+}
+p{
+    line-height: 28px;
+    max-width: 640px;
+}
+img {
+    vertical-align: middle;
+}
+hr, img {
+    border: 0;
+}
+.btn.btn-primary.btn-mute{
+    color: #1989fa;
+    background-color: transparent;
+    border-color: rgba(25,137,250,.4);
+}

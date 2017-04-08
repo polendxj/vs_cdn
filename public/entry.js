@@ -11,6 +11,7 @@ import App from './containers/App'
 import LoginContainer from './containers/Login'
 import Developing from './containers/Developing'
 import source_panel_container from './containers/sourceService/source_panel_container'
+import FusionContainer from './containers/fusion/FusionContainer'
 import configureStore from './store/configureStore'
 
 let store = configureStore()
@@ -24,6 +25,7 @@ render(
                 <Route path="/Developing" component={Developing}/>
                 <Route path="/login" component={LoginContainer}/>
                 <Route path="/source" component={source_panel_container}/>
+                <Route path="/fusion" component={FusionContainer}/>
             </Route>
         </Router>
     </Provider>,
