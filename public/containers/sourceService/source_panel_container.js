@@ -34,7 +34,7 @@ class Source_panel_left extends Component {
         return (
             <div>
                 <div style={{textAlign:"center",marginTop:"20px"}}>
-                    <button type="button" className="btn btn-primary btn-xs btn-rounded">
+                    <button type="button" className="btn btn-primary btn-xs btn-rounded" style={{color:"#1989FA",backgroundColor:"rgba(33,150,243,0.1)",borderColor:"#AAD3FE"}}>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新建源站服务&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </button>
                 </div>
