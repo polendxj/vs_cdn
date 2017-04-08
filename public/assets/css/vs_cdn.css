@@ -1,0 +1,125 @@
+.no-resources {
+    padding: 90px 60px;
+    text-align: center;
+}
+.no-resources p{
+    margin: 16px auto;
+    color: #8d9199;
+    font-size: 12px;
+}
+.no-resources img{
+    width: 80%;
+    min-width: 240px;
+    max-width: 320px;
+}
+p{
+    line-height: 28px;
+    max-width: 640px;
+}
+img {
+    vertical-align: middle;
+}
+hr, img {
+    border: 0;
+}
+.btn.btn-primary.btn-mute{
+    color: #1989fa;
+    background-color: transparent;
+    border-color: rgba(25,137,250,.4);
+}
+
+.product-main{
+    overflow: auto;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.resource-navbar {
+    padding: 0 40px;
+}
+.resource-navbar .resource-nav-header {
+    padding: 39px 0 36px;
+}
+.resource-navbar .resource-menu {
+    border-bottom: 2px solid #e6e9f0;
+}
+.resource-navbar .resource-breadcrumb {
+    list-style: none;
+    padding: 0;
+    margin-bottom: -2px;
+}
+.resource-body {
+    padding: 40px;
+}
+.product-main .product-content {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+}
+.resource-body {
+    padding: 40px;
+}
+.q-item, .q-item-label {
+    margin-bottom: 30px;
+}
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.q-item .item-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #2f3033;
+}
+.radio-btn.selected {
+    background-color: #fff;
+}
+.radio-btn.selected, .radio-btn:hover {
+    border-color: #1989fa;
+}
+.radio-btn {
+    moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    border: 1px solid #dcdfe5;
+    display: block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-transition: all .15s;
+    transition: all .15s;
+    float: left;
+    margin-right: 5px;
+    font-weight: 500;
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+}
+.q-item hr {
+    width: 100%;
+    margin-top: 30px;
+}
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top: 1px solid #eee;
+    box-sizing: content-box;
+    height: 0;
+}
+.q-item .item-body .item-describe {
+    color: #5e6166;
+    margin: 0 0 20px;
+}

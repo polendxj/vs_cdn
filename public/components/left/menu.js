@@ -238,7 +238,7 @@ class PerformanceMonitoringMenu extends Component {
                     <a href="javascript:void(0)" style={{fontSize:"14px"}}><i className="icon-feed"></i>
                         <span>{"源站服务"}</span></a>
                 </li>
-                <li className="left"  >
+                <li className="left"  onClick={this._leftMenuClick.bind(this, '/fusion')}>
                     <a href="javascript:void(0)" style={{fontSize:"14px"}}><i className="icon-dribbble3"></i>
                         <span>{"融合CDN"}</span></a>
                 </li>
