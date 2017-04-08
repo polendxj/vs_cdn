@@ -119,3 +119,7 @@ hr {
     box-sizing: content-box;
     height: 0;
 }
+.q-item .item-body .item-describe {
+    color: #5e6166;
+    margin: 0 0 20px;
+}

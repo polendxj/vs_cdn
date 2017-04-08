@@ -12,13 +12,16 @@ class FusionContainer extends Component {
         this._startRefresh = this._startRefresh.bind(this);
         this.showAddDomain = false;
     }
+
     _startRefresh() {
         this.props.dispatch(commonRefresh())
     }
-    _addDomain(){
+
+    _addDomain() {
         this.showAddDomain = true;
         this._startRefresh();
     }
+
     render() {
         var tableHeight = ($(window).height() - 93);
         return (
@@ -48,14 +51,17 @@ class FusionContainerLeft extends Component {
     constructor(props) {
         super(props);
     }
-    _addDomain(){
+
+    _addDomain() {
         this.props._addDomain();
     }
+
     render() {
         return (
             <div>
                 <div style={{textAlign: "center", marginTop: "20px"}}>
-                    <button type="button" className="btn btn-primary btn-xs btn-rounded" onClick={this._addDomain.bind(this)}>
+                    <button type="button" className="btn btn-primary btn-xs btn-rounded"
+                            onClick={this._addDomain.bind(this)}>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         新建加速域名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </button>
@@ -75,7 +81,8 @@ class FusionContainerLeft extends Component {
                         <h6>暂无加速域名</h6>
                         <p>你可以点击下面按钮添加按钮创建第一个加速域名</p>
                     </div>
-                    <button className="btn btn-primary btn-mute btn-rounded" onClick={this._addDomain.bind(this)}>立即添加</button>
+                    <button className="btn btn-primary btn-mute btn-rounded" onClick={this._addDomain.bind(this)}>立即添加
+                    </button>
                 </div>
             </div>
         )
@@ -87,7 +94,8 @@ class FusionContainerRight extends Component {
         super(props);
         this.domainType = "normal";
     }
-    componentDidMount(){
+
+    componentDidMount() {
         $('.daterange-single').daterangepicker({
             singleDatePicker: true,
             applyClass: 'bg-slate-600',
@@ -106,29 +114,33 @@ class FusionContainerRight extends Component {
             locale: dateLocale
         });
     }
-    _addDomain(){
+
+    _addDomain() {
         this.props._addDomain();
     }
-    domainTypeChanged(type){
+
+    domainTypeChanged(type) {
         this.domainType = type;
         this.props._startRefresh();
     }
+
     render() {
         console.log(this.props.showAddDomain);
         var rightContent = "";
         var domainType = this.domainType;
         return (
             <div>
-                <div className="no-resources" style={{display:this.props.showAddDomain?"none":"block"}}>
+                <div className="no-resources" style={{display: this.props.showAddDomain ? "none" : "block"}}>
                     <img src="/assets/images/vs_cdn/no-resources.png"/>
                     <p>暂无加速域名，点击按钮立即添加</p>
-                    <button className="btn btn-primary btn-mute btn-rounded" onClick={this._addDomain.bind(this)}>立即添加</button>
+                    <button className="btn btn-primary btn-mute btn-rounded" onClick={this._addDomain.bind(this)}>立即添加
+                    </button>
                 </div>
-                <div className="product-main" style={{display:this.props.showAddDomain?"block":"none"}}>
+                <div className="product-main" style={{display: this.props.showAddDomain ? "block" : "none"}}>
                     <div className="navbar-resource">
                         <div className="resource-navbar">
                             <div className="resource-nav-header">
-                                <a ><img className="resource-icon" alt="" /> <strong className="ng-binding"></strong></a>
+                                <a ><img className="resource-icon" alt=""/> <strong className="ng-binding"></strong></a>
                             </div>
                             <div className="resource-menu">
                                 <ul className="resource-breadcrumb">
@@ -144,26 +156,76 @@ class FusionContainerRight extends Component {
                                         <div className="item-title col-md-3">域名类型</div>
                                         <div className="item-body col-md-9">
                                             <div>
-                                                <label className={domainType=="normal"?"radio-btn selected":"radio-btn"} onClick={this.domainTypeChanged.bind(this,'normal')}>
-                                                    <input type="radio" name="domainType" checked={domainType=="normal"} />
+                                                <label
+                                                    className={domainType == "normal" ? "radio-btn selected" : "radio-btn"}
+                                                    onClick={this.domainTypeChanged.bind(this, 'normal')}>
+                                                    <input type="radio" name="domainType"
+                                                           checked={domainType == "normal"}/>
                                                     <span>普通域名</span>
                                                 </label>
-                                                <label className={domainType=="wildcard"?"radio-btn selected":"radio-btn"} onClick={this.domainTypeChanged.bind(this,'wildcard')}>
-                                                    <input type="radio" name="domainType" checked={domainType=="wildcard"}/>
+                                                <label
+                                                    className={domainType == "wildcard" ? "radio-btn selected" : "radio-btn"}
+                                                    onClick={this.domainTypeChanged.bind(this, 'wildcard')}>
+                                                    <input type="radio" name="domainType"
+                                                           checked={domainType == "wildcard"}/>
                                                     <span>泛域名</span>
                                                 </label>
-                                                <label className={domainType=="pan"?"radio-btn selected":"radio-btn"} onClick={this.domainTypeChanged.bind(this,'pan')}>
-                                                    <input type="radio" name="domainType" checked={domainType=="pan"} />
+                                                <label
+                                                    className={domainType == "pan" ? "radio-btn selected" : "radio-btn"}
+                                                    onClick={this.domainTypeChanged.bind(this, 'pan')}>
+                                                    <input type="radio" name="domainType"
+                                                           checked={domainType == "pan"}/>
                                                     <span>泛子域名</span>
                                                 </label>
                                             </div>
-                                            <div>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                </section>
+                                <section className="q-item">
+                                    <div className="row">
+                                        <div className="item-title col-md-3">加速域名</div>
+                                        <div className="item-body col-md-9">
+                                            <div className="item-describe">请输入您要加速的域名。注意：加速的域名请先完成在中国大陆的备案。</div>
+                                            <div className="form-group form-inline">
+                                                <input className="form-control" type="text"/>
                                                 <input type="text"
                                                        className="form-control daterange-two"
                                                        placeholder="选择日期"/>
                                                 <input type="text"
                                                        className="form-control daterange-single"
                                                        placeholder="选择日期"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                </section>
+                                <section className="q-item">
+                                    <div className="row">
+                                        <div className="item-title col-md-3">域名类型</div>
+                                        <div className="item-body col-md-9">
+                                            <div>
+                                                <label
+                                                    className={domainType == "normal" ? "radio-btn selected" : "radio-btn"}
+                                                    onClick={this.domainTypeChanged.bind(this, 'normal')}>
+                                                    <input type="radio" name="domainType"
+                                                           checked={domainType == "normal"}/>
+                                                    <span>普通域名</span>
+                                                </label>
+                                                <label
+                                                    className={domainType == "wildcard" ? "radio-btn selected" : "radio-btn"}
+                                                    onClick={this.domainTypeChanged.bind(this, 'wildcard')}>
+                                                    <input type="radio" name="domainType"
+                                                           checked={domainType == "wildcard"}/>
+                                                    <span>泛域名</span>
+                                                </label>
+                                                <label
+                                                    className={domainType == "pan" ? "radio-btn selected" : "radio-btn"}
+                                                    onClick={this.domainTypeChanged.bind(this, 'pan')}>
+                                                    <input type="radio" name="domainType"
+                                                           checked={domainType == "pan"}/>
+                                                    <span>泛子域名</span>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
