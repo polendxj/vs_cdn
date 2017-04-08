@@ -33,7 +33,8 @@ class FusionContainer extends Component {
                         <FusionContainerLeft _addDomain={this._addDomain}/>
                     </div>
                     <div style={{overflow: "hidden", height: "100%",}}>
-                        <FusionContainerRight _addDomain={this._addDomain} showAddDomain={this.showAddDomain}/>
+                        <FusionContainerRight _addDomain={this._addDomain} showAddDomain={this.showAddDomain}
+                                              _startRefresh={this._startRefresh}/>
                     </div>
                     <div style={{clear: "both"}}></div>
                 </div>
@@ -45,7 +46,7 @@ class FusionContainer extends Component {
 
 class FusionContainerLeft extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
     _addDomain(){
         this.props._addDomain();
@@ -54,7 +55,7 @@ class FusionContainerLeft extends Component {
         return (
             <div>
                 <div style={{textAlign: "center", marginTop: "20px"}}>
-                    <button type="button" className="btn btn-primary btn-xs btn-rounded">
+                    <button type="button" className="btn btn-primary btn-xs btn-rounded" onClick={this._addDomain.bind(this)}>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         新建加速域名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </button>
@@ -83,20 +84,74 @@ class FusionContainerLeft extends Component {
 
 class FusionContainerRight extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.domainType = "normal";
     }
     _addDomain(){
         this.props._addDomain();
     }
+    domainTypeChanged(type){
+        this.domainType = type;
+        this.props._startRefresh();
+    }
     render() {
         console.log(this.props.showAddDomain);
-        return (
-            <div>
+        var rightContent = "";
+        var domainType = this.domainType;
+        if(this.props.showAddDomain){
+            rightContent =
+                <div className="product-main">
+                    <div className="navbar-resource">
+                        <div className="resource-navbar">
+                            <div className="resource-nav-header">
+                                <a ><img className="resource-icon" alt="" /> <strong className="ng-binding"></strong></a>
+                            </div>
+                            <div className="resource-menu">
+                                <ul className="resource-breadcrumb">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="product-content">
+                        <div className="resource-body">
+                            <form id="createForm" name="createForm">
+                                <section className="q-item">
+                                    <div className="row">
+                                        <div className="item-title col-md-3">域名类型</div>
+                                        <div className="item-body col-md-9">
+                                            <div>
+                                                <label className={domainType=="normal"?"radio-btn selected":"radio-btn"} onClick={this.domainTypeChanged.bind(this,'normal')}>
+                                                    <input type="radio" name="domainType" checked={domainType=="normal"} />
+                                                    <span>普通域名</span>
+                                                </label>
+                                                <label className={domainType=="wildcard"?"radio-btn selected":"radio-btn"} onClick={this.domainTypeChanged.bind(this,'wildcard')}>
+                                                    <input type="radio" name="domainType" checked={domainType=="wildcard"}/>
+                                                    <span>泛域名</span>
+                                                </label>
+                                                <label className={domainType=="pan"?"radio-btn selected":"radio-btn"} onClick={this.domainTypeChanged.bind(this,'pan')}>
+                                                    <input type="radio" name="domainType"checked={domainType=="pan"} />
+                                                    <span>泛子域名</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                </section>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        }else{
+            rightContent =
                 <div className="no-resources">
                     <img src="/assets/images/vs_cdn/no-resources.png"/>
                     <p>暂无加速域名，点击按钮立即添加</p>
                     <button className="btn btn-primary btn-mute btn-rounded" onClick={this._addDomain.bind(this)}>立即添加</button>
                 </div>
+        }
+        return (
+            <div>
+                {rightContent}
             </div>
         )
     }
