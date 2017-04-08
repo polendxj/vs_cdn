@@ -87,6 +87,25 @@ class FusionContainerRight extends Component {
         super(props);
         this.domainType = "normal";
     }
+    componentDidMount(){
+        $('.daterange-single').daterangepicker({
+            singleDatePicker: true,
+            applyClass: 'bg-slate-600',
+            cancelClass: 'btn-default',
+            autoUpdateInput: false,
+            locale: dateLocale
+        });
+        $('.daterange-two').daterangepicker({
+            maxDate: moment(), //最大时间
+            opens: "left",
+            applyClass: 'bg-slate-600',
+            cancelClass: 'btn-default',
+            ranges: rangesLocale,
+            startDate: '2016/01/01',
+            endDate: moment(),
+            locale: dateLocale
+        });
+    }
     _addDomain(){
         this.props._addDomain();
     }
@@ -98,9 +117,14 @@ class FusionContainerRight extends Component {
         console.log(this.props.showAddDomain);
         var rightContent = "";
         var domainType = this.domainType;
-        if(this.props.showAddDomain){
-            rightContent =
-                <div className="product-main">
+        return (
+            <div>
+                <div className="no-resources" style={{display:this.props.showAddDomain?"none":"block"}}>
+                    <img src="/assets/images/vs_cdn/no-resources.png"/>
+                    <p>暂无加速域名，点击按钮立即添加</p>
+                    <button className="btn btn-primary btn-mute btn-rounded" onClick={this._addDomain.bind(this)}>立即添加</button>
+                </div>
+                <div className="product-main" style={{display:this.props.showAddDomain?"block":"none"}}>
                     <div className="navbar-resource">
                         <div className="resource-navbar">
                             <div className="resource-nav-header">
@@ -129,9 +153,17 @@ class FusionContainerRight extends Component {
                                                     <span>泛域名</span>
                                                 </label>
                                                 <label className={domainType=="pan"?"radio-btn selected":"radio-btn"} onClick={this.domainTypeChanged.bind(this,'pan')}>
-                                                    <input type="radio" name="domainType"checked={domainType=="pan"} />
+                                                    <input type="radio" name="domainType" checked={domainType=="pan"} />
                                                     <span>泛子域名</span>
                                                 </label>
+                                            </div>
+                                            <div>
+                                                <input type="text"
+                                                       className="form-control daterange-two"
+                                                       placeholder="选择日期"/>
+                                                <input type="text"
+                                                       className="form-control daterange-single"
+                                                       placeholder="选择日期"/>
                                             </div>
                                         </div>
                                     </div>
@@ -141,17 +173,6 @@ class FusionContainerRight extends Component {
                         </div>
                     </div>
                 </div>
-        }else{
-            rightContent =
-                <div className="no-resources">
-                    <img src="/assets/images/vs_cdn/no-resources.png"/>
-                    <p>暂无加速域名，点击按钮立即添加</p>
-                    <button className="btn btn-primary btn-mute btn-rounded" onClick={this._addDomain.bind(this)}>立即添加</button>
-                </div>
-        }
-        return (
-            <div>
-                {rightContent}
             </div>
         )
     }
