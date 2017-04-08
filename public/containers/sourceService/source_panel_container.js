@@ -38,6 +38,15 @@ class Source_panel_left extends Component {
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新建源站服务&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </button>
                 </div>
+                <div style={{width:"203px",paddingLeft:"45px"}}>
+                    <div className="form-group has-feedback has-feedback-left" style={{textAlign:"center",marginTop:"15px"}}>
+                        <input type="text" className="form-control input-xs" placeholder="搜索源站服务" style={{borderRadius:"50px"}}/>
+                        <div className="form-control-feedback">
+                            <i className="icon-search4 text-size-base"></i>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
         )
