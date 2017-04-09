@@ -9,7 +9,6 @@ export default class BreadCrumbs extends Component {
     _doLink(path) {
         if(path){
             browserHistory.push(path)
-
         }
     }
 

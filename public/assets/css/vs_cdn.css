@@ -7,6 +7,16 @@
     color: #8d9199;
     font-size: 12px;
 }
+.upload-declarations {
+    padding-top: 10px;
+    color: #8d9199;
+}
+.upload-declarations p{
+    font-size: 12px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+}
 .no-resources img{
     width: 80%;
     min-width: 240px;
@@ -241,4 +251,107 @@ textarea.form-control {
 }
 #create-domain .help-block-width{
     max-width: 640px;
+}
+.q-item .pull-right .btn {
+    margin: 0 10px;
+}
+.cdn-progress{
+    padding-left:0;
+    max-width:400px;
+    height:8px;
+    background-color: #ebf0fa;
+}
+#financial table.table td:first-child {
+    color: #525866;
+    font-weight: 700;
+}
+.financial .table>thead>tr>th, .financial .table>tbody>tr>th, .financial .table>tfoot>tr>th, .financial .table>thead>tr>td, .financial .table>tbody>tr>td, .financial .table>tfoot>tr>td{
+    padding: 10px 0
+}
+
+.financial table.table td {
+    vertical-align: initial;
+    padding: 15px 10px;
+    line-height: 2em;
+}
+.financial table.table td .tips {
+    max-width: 150px;
+    font-weight: 400;
+    color: #7a8599;
+    font-size: 12px;
+    line-height: 1.8em;
+}
+.financial table.table ul>li {
+    list-style-type: none;
+    padding: 5px 0;
+}
+.my-coupon {
+    width: 240px;
+    background: #fffbf2;
+    margin: 0 20px 20px 0;
+    text-align: center;
+    overflow: hidden;
+    float: left;
+}
+.my-coupon .time, .my-coupon .title {
+    color: #e7c991;
+}
+.my-coupon .title {
+    border-top: 1px solid #e7c991;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px dashed #e7c991;
+}
+.my-coupon .body, .my-coupon .title {
+    position: relative;
+    padding: 20px;
+}
+.my-coupon .body, .my-coupon .title {
+    border-left: 1px solid #e7c991;
+    border-right: 1px solid #e7c991;
+}
+.my-coupon .body {
+    border-bottom: 1px solid #e7c991;
+    border-radius: 0 0 4px 4px;
+}
+.my-coupon .body .desc {
+    position: relative;
+    color: #fda929;
+    height: 120px;
+}
+.my-coupon .body .time {
+    position: relative;
+    padding: 20px 0 0;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.my-coupon .time, .my-coupon .title {
+    color: #e7c991;
+}
+.my-coupon .title::after {
+    right: -15px;
+    bottom: -15px;
+}
+.my-coupon .title::before {
+    left: -15px;
+    bottom: -15px;
+}
+.my-coupon .title::after, .my-coupon .title::before {
+    position: absolute;
+    z-index: 10;
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid #e7c991;
+    background: #fff;
+}
+.describe-list ol {
+    padding: 20px;
+    background-color: #f2f7ff;
+    color: #9fa9bd;
+    border-radius: 8px;
+    list-style-position: inside;
+    font-size: 14px;
 }

@@ -228,7 +228,7 @@ class PerformanceMonitoringMenu extends Component {
                 <li className="left" onClick={this._leftMenuClick.bind(this, '/')}><a
                     href="javascript:void(0)" style={{fontSize:"14px"}}><i
                     className="icon-vcard"></i> <span>{"个人中心"}</span></a></li>
-                <li className="left" onClick={this._leftMenuClick.bind(this, '/')}><a
+                <li className="left" onClick={this._leftMenuClick.bind(this, '/financialStatistic')}><a
                     href="javascript:void(0)" style={{fontSize:"14px"}}><i
                     className="icon-coin-yen"></i> <span>{"财务统计"}</span></a></li>
                 <li className="left" onClick={this._leftMenuClick.bind(this, '/')}>

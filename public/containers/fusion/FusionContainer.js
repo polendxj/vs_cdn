@@ -185,7 +185,7 @@ class FusionContainerRight extends Component {
         console.log(this.props.showAddDomain);
         var rightContent = "";
         var domainType = this.domainType;
-        var scrollHeight = ($(window).height() - 160);
+        var scrollHeight = ($(window).height() - 200);
         return (
             <div>
                 <div className="no-resources" style={{display: this.props.showAddDomain ? "none" : "block"}}>
@@ -418,6 +418,12 @@ class FusionContainerRight extends Component {
                                         </div>
                                     </div>
                                     <hr/>
+                                </section>
+                                <section className="q-item">
+                                    <div className="pull-right">
+                                        <button className="btn btn-default">取消</button>
+                                        <button className="btn btn-primary">创建</button>
+                                    </div>
                                 </section>
                             </form>
                         </div>

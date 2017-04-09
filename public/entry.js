@@ -12,6 +12,9 @@ import LoginContainer from './containers/Login'
 import Developing from './containers/Developing'
 import source_panel_container from './containers/sourceService/source_panel_container'
 import FusionContainer from './containers/fusion/FusionContainer'
+import FinancialStatisticsContainer from './containers/financialStatistics/FinancialStatisticsContainer'
+import SetBillInfoContainer from './containers/financialStatistics/SetBillInfoContainer'
+import CreateBillInfoContainer from './containers/financialStatistics/CreateBillInfoContainer'
 import configureStore from './store/configureStore'
 
 let store = configureStore()
@@ -26,6 +29,9 @@ render(
                 <Route path="/login" component={LoginContainer}/>
                 <Route path="/source" component={source_panel_container}/>
                 <Route path="/fusion" component={FusionContainer}/>
+                <Route path="/financialStatistic" component={FinancialStatisticsContainer}/>
+                <Route path="/setBillInfo" component={SetBillInfoContainer}/>
+                <Route path="/createBillInfo" component={CreateBillInfoContainer}/>
             </Route>
         </Router>
     </Provider>,
