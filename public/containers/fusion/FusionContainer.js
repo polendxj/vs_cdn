@@ -148,6 +148,11 @@ class FusionContainerRight extends Component {
             endDate: moment(),
             locale: dateLocale
         });
+        $('.cdn-li a').on('show.bs.tab', function(e) {
+            if($(this).parent().hasClass("disabled")){
+                e.preventDefault();
+            }
+        });
     }
 
     _addDomain() {
@@ -156,10 +161,6 @@ class FusionContainerRight extends Component {
 
     domainTypeChanged(type) {
         this.domainType = type;
-        if(type!="normal"){
-            console.log("aa");
-            $(".nav-link").css("cursor","not-allowed");
-        }
         this.props._startRefresh();
     }
     geoCoverSelect(type) {
@@ -205,7 +206,7 @@ class FusionContainerRight extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="product-content" style={{height:scrollHeight+"px"}}>
+                    <div id="create-domain" className="product-content" style={{height:scrollHeight+"px"}}>
                         <div className="resource-body">
                             <form id="createForm" name="createForm">
                                 <section className="q-item">
@@ -248,12 +249,6 @@ class FusionContainerRight extends Component {
                                             <div className="item-describe">请输入您要加速的域名。注意：加速的域名请先完成在中国大陆的备案。</div>
                                             <div className="form-group form-inline">
                                                 <input className="form-control" type="text"/>
-                                                <input type="text"
-                                                       className="form-control daterange-two"
-                                                       placeholder="选择日期"/>
-                                                <input type="text"
-                                                       className="form-control daterange-single"
-                                                       placeholder="选择日期"/>
                                             </div>
                                         </div>
                                     </div>
@@ -368,25 +363,57 @@ class FusionContainerRight extends Component {
                                     <div className="row">
                                         <div className="item-title col-md-3">源站配置</div>
                                         <div className="item-body col-md-9">
-                                            <div className="item-describe">
-                                                <span style={{display:domainType == "normal"?"block":"none"}}>指定需要加速的资源。填写资源所在的域名或IP，也可以对保存在浪潮云存储上的资源创建更多的加速功能。</span>
-                                                <span style={{display:domainType == "wildcard"?"block":"none"}}>泛域名暂仅支持源站在浪潮的公开存储空间。</span>
+                                            <div className="item-body-child" style={{display:this.sourceType != "langchaoBucket"?"block":"none"}}>
+                                                <div className="child-title">回源 HOST</div>
+                                                <div className="child-describe">可选项，默认为加速域名。</div>
+                                                <div className="form-group form-inline">
+                                                    <input className="form-control" type="text"/>
+                                                </div>
                                             </div>
-                                            <div className="tab radio-tab">
-                                                <ul className="cdn-nav cdn-nav-tabs">
-                                                    <li className={this.sourceType=="langchaoBucket"?"sourceTypeNormal active":"sourceTypeNormal"} onClick={this.sourceTypeSelect.bind(this,"langchaoBucket")}>
-                                                        <a href="javascript:void(0)" className="nav-link-normal">浪潮云存储</a>
-                                                    </li>
-                                                    <li className={this.sourceType=="domain"?"sourceType active":"sourceType"} onClick={this.sourceTypeSelect.bind(this,"domain")}>
-                                                        <a href="javascript:void(0)" className="nav-link">源站域名</a>
-                                                    </li>
-                                                    <li className={this.sourceType=="ip"?"sourceType active":"sourceType"} onClick={this.sourceTypeSelect.bind(this,"ip")}>
-                                                        <a href="javascript:void(0)" className="nav-link">IP地址</a>
-                                                    </li>
-                                                    <li className={this.sourceType=="advanced"?"sourceType active":"sourceType"} onClick={this.sourceTypeSelect.bind(this,"advanced")}>
-                                                        <a href="javascript:void(0)" className="nav-link">高级设置</a>
-                                                    </li>
-                                                </ul>
+                                            <div className="source item-body-child">
+                                                <div className="child-title" style={{display:this.sourceType != "langchaoBucket"?"block":"none"}}>基础设置</div>
+                                                <div className="item-describe">
+                                                    <span style={{display:domainType == "normal"?"block":"none"}}>指定需要加速的资源。填写资源所在的域名或IP，也可以对保存在浪潮云存储上的资源创建更多的加速功能。</span>
+                                                    <span style={{display:domainType == "wildcard"?"block":"none"}}>泛域名暂仅支持源站在浪潮的公开存储空间。</span>
+                                                </div>
+                                                <div className="panel-body">
+                                                    <div className="tabbable">
+                                                        <ul className="nav nav-tabs nav-tabs-solid">
+                                                            <li className="active cdn-li" onClick={this.sourceTypeSelect.bind(this,"langchaoBucket")}><a href="#cdn-tab1" data-toggle="tab">浪潮云存储</a></li>
+                                                            <li className={domainType!="normal"?"disabled cdn-li":"cdn-li"} onClick={this.sourceTypeSelect.bind(this,"domain")}><a href="#cdn-tab2" data-toggle="tab">源站域名</a></li>
+                                                            <li className={domainType!="normal"?"disabled cdn-li":"cdn-li"} onClick={this.sourceTypeSelect.bind(this,"ip")}><a href="#cdn-tab3" data-toggle="tab">IP地址</a></li>
+                                                            <li className={domainType!="normal"?"disabled cdn-li":"cdn-li"} onClick={this.sourceTypeSelect.bind(this,"advanced")}><a href="#cdn-tab4" data-toggle="tab">高级设置</a></li>
+                                                        </ul>
+
+                                                        <div className="tab-content">
+                                                            <div className="tab-pane active" id="cdn-tab1">
+                                                                <select className="form-control source-input">
+                                                                    <optgroup label="华南">
+                                                                        <option value="AZ">云存储1</option>
+                                                                        <option value="CO">云存储2</option>
+                                                                        <option value="ID">云存储3</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                            </div>
+                                                            <div className="tab-pane" id="cdn-tab2">
+                                                                <div className="form-group form-inline">
+                                                                    <input className="form-control" type="text"/>
+                                                                </div>
+                                                                <div id="source-test" className="clearfix test-url-error">
+                                                                    <div className="child-title">源站测试</div>
+                                                                    <div className="input-group source-input pull-left margin-right">
+                                                                        <span className="input-group-addon">http://&lt;domain&gt;/</span>
+                                                                        <input className="form-control" placeholder="测试资源名"/>
+                                                                    </div>
+                                                                </div>
+                                                                <p className="help-block help-block-width">1. 例如：index.html，我们会访问源站下此资源进行测试，请保证资源可访问；<br/>请使用静态资源（.jpg，.png 等），动态资源（如.jsp，.php，.asp，.aspx，.action 等）暂不支持。</p>
+                                                                <p className="help-block help-block-width">2. 源站测试请求的 HOST HEADER 值是加速域名或指定的回源 HOST，与回源域名或回源 IP 无关，如源站测试失败请您检查源站服务器是否配置相应的 HOST。</p>
+                                                                <div><button className="btn btn-primary" disabled>源站测试</button></div>
+                                                                <p className="help-block help-block-width">* 小提示：只有源站测试通过才能继续创建域名。</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
